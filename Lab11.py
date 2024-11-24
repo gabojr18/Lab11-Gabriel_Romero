@@ -1,10 +1,10 @@
 import os
 import matplotlib.pyplot as plt
 
-# Update the file paths to the new location
-STUDENTS_FILE = r"C:\Users\gabojr\OneDrive\UF 2024\Fall Semester 2024\Cop3502c\Lab 11\Data\students.txt"
-ASSIGNMENTS_FILE = r"C:\Users\gabojr\OneDrive\UF 2024\Fall Semester 2024\Cop3502c\Lab 11\Data\assignments.txt"
-SUBMISSIONS_FOLDER = r"C:\Users\gabojr\OneDrive\UF 2024\Fall Semester 2024\Cop3502c\Lab 11\Data\submissions"
+
+STUDENTS_FILE = "students.txt"
+ASSIGNMENTS_FILE = "assignments.txt"
+SUBMISSIONS_FOLDER = "submissions"
 
 def load_students():
     students = {}
@@ -132,7 +132,6 @@ def assignment_graph(name, assignments, submissions):
     plt.ylabel("Number of Students")
     plt.xlim(50, 100)  # Limit x-axis to 50–100
     plt.show()
-
 
 def main():
     students = load_students()
