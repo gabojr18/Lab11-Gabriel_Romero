@@ -2,9 +2,9 @@ import os
 import matplotlib.pyplot as plt
 
 
-STUDENTS_FILE = "students.txt"
-ASSIGNMENTS_FILE = "assignments.txt"
-SUBMISSIONS_FOLDER = "submissions"
+STUDENTS_FILE = r"C:\Users\gabojr\OneDrive\UF 2024\Fall Semester 2024\Cop3502c\Lab 11\Data\students.txt"
+ASSIGNMENTS_FILE = r"C:\Users\gabojr\OneDrive\UF 2024\Fall Semester 2024\Cop3502c\Lab 11\Data\assignments.txt"
+SUBMISSIONS_FOLDER = r"C:\Users\gabojr\OneDrive\UF 2024\Fall Semester 2024\Cop3502c\Lab 11\Data\submissions"
 
 def load_students():
     students = {}
