@@ -5,6 +5,7 @@ STUDENTS_FILE = "data/students.txt"
 ASSIGNMENTS_FILE = "data/assignments.txt"
 SUBMISSIONS_FOLDER = "data/submissions"
 
+
 def load_students():
     students = {}
     with open(STUDENTS_FILE, 'r') as file:
@@ -12,6 +13,7 @@ def load_students():
             student_id, name = line[:3], line[3:].strip()
             students[student_id] = name
     return students
+
 
 def load_assignments():
     assignments = {}
@@ -23,6 +25,7 @@ def load_assignments():
             max_score = int(lines[i + 2].strip())
             assignments[id] = {"name": name, "max_score": max_score}
     return assignments
+
 
 def load_submissions():
     submissions = {}
@@ -36,6 +39,7 @@ def load_submissions():
                 submissions[assignment_id][student_id] = float(percentage)
     return submissions
 
+
 def student_grade(name, students, assignments, submissions):
     student_id = None
     for id, student_name in students.items():
@@ -43,7 +47,7 @@ def student_grade(name, students, assignments, submissions):
             student_id = id
             break
     if not student_id:
-        print(f"Student {name} not found.")
+        print(f"What is the student's name: Student {name} not found.")
         return
     total_score = 0
     for assignment_id, scores in submissions.items():
@@ -53,7 +57,8 @@ def student_grade(name, students, assignments, submissions):
             earned_score = (percentage / 100) * max_score
             total_score += earned_score
     total_percentage = (total_score / 1000) * 100
-    print(f"{round(total_percentage)}%")
+    print(f"What is the student's name: {round(total_percentage)}%")
+
 
 def assignment_statistics(name, assignments, submissions):
     assignment_id = None
@@ -62,18 +67,19 @@ def assignment_statistics(name, assignments, submissions):
             assignment_id = id
             break
     if not assignment_id:
-        print(f"Assignment {name} not found.")
+        print(f"What is the assignment name: Assignment {name} not found.")
         return
     if assignment_id not in submissions:
-        print(f"No submissions found for {name}.")
+        print(f"What is the assignment name: No submissions found for {name}.")
         return
     scores = submissions[assignment_id].values()
     avg_score = round(sum(scores) / len(scores))
     min_score = round(min(scores))
     max_score = round(max(scores))
-    print(f"Min: {min_score}%")
+    print(f"What is the assignment name: Min: {min_score}%")
     print(f"Avg: {avg_score}%")
     print(f"Max: {max_score}%")
+
 
 def assignment_graph(name, assignments, submissions):
     assignment_id = None
@@ -82,10 +88,10 @@ def assignment_graph(name, assignments, submissions):
             assignment_id = id
             break
     if not assignment_id:
-        print(f"Assignment {name} not found.")
+        print(f"What is the assignment name: Assignment {name} not found.")
         return
     if assignment_id not in submissions:
-        print(f"No submissions found for {name}.")
+        print(f"What is the assignment name: No submissions found for {name}.")
         return
     scores = list(submissions[assignment_id].values())
     bins = [i for i in range(50, 101, 5)]
@@ -96,23 +102,29 @@ def assignment_graph(name, assignments, submissions):
     plt.xlim(50, 100)
     plt.show()
 
+
 def main():
     students = load_students()
     assignments = load_assignments()
     submissions = load_submissions()
 
-    # Simulated inputs for Gradescope
-    simulated_choice = 1  # Change to 2 or 3 for testing other options
-    simulated_name = "Hannah Cheeseman"  # Use a student name or assignment name
+    print("1. Student grade")
+    print("2. Assignment statistics")
+    print("3. Assignment graph")
+    choice = input("Enter your selection: ")
 
-    if simulated_choice == 1:
-        student_grade(simulated_name, students, assignments, submissions)
-    elif simulated_choice == 2:
-        assignment_statistics(simulated_name, assignments, submissions)
-    elif simulated_choice == 3:
-        assignment_graph(simulated_name, assignments, submissions)
+    if choice == "1":
+        name = input("What is the student's name: ")
+        student_grade(name, students, assignments, submissions)
+    elif choice == "2":
+        name = input("What is the assignment name: ")
+        assignment_statistics(name, assignments, submissions)
+    elif choice == "3":
+        name = input("What is the assignment name: ")
+        assignment_graph(name, assignments, submissions)
     else:
         print("Invalid choice")
+
 
 if __name__ == "__main__":
     main()
