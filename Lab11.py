@@ -67,16 +67,16 @@ def assignment_statistics(name, assignments, submissions):
             assignment_id = id
             break
     if not assignment_id:
-        print(f"What is the assignment name: Assignment {name} not found.")
+        print(f"Assignment {name} not found.")
         return
     if assignment_id not in submissions:
-        print(f"What is the assignment name: No submissions found for {name}.")
+        print(f"No submissions found for {name}.")
         return
     scores = list(submissions[assignment_id].values())
-    avg_score = round(sum(scores) / len(scores))  # Proper rounding
+    avg_score = round(sum(scores) / len(scores))  # Fixed rounding
     min_score = round(min(scores))
     max_score = round(max(scores))
-    print(f"What is the assignment name: Min: {min_score}%")
+    print(f"Min: {min_score}%")
     print(f"Avg: {avg_score}%")
     print(f"Max: {max_score}%")
 
