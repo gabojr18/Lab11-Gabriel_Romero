@@ -47,7 +47,7 @@ def student_grade(name, students, assignments, submissions):
             student_id = id
             break
     if not student_id:
-        print(f"What is the student's name: Student {name} not found.")
+        print(f"Student {name} not found.")
         return
     total_score = 0
     for assignment_id, scores in submissions.items():
@@ -57,7 +57,7 @@ def student_grade(name, students, assignments, submissions):
             earned_score = (percentage / 100) * max_score
             total_score += earned_score
     total_percentage = (total_score / 1000) * 100
-    print(f"What is the student's name: {round(total_percentage)}%")
+    print(f"{round(total_percentage)}%")
 
 
 def assignment_statistics(name, assignments, submissions):
@@ -67,16 +67,16 @@ def assignment_statistics(name, assignments, submissions):
             assignment_id = id
             break
     if not assignment_id:
-        print(f"What is the assignment name: Assignment {name} not found.")
+        print(f"Assignment {name} not found.")
         return
     if assignment_id not in submissions:
-        print(f"What is the assignment name: No submissions found for {name}.")
+        print(f"No submissions found for {name}.")
         return
     scores = submissions[assignment_id].values()
     avg_score = round(sum(scores) / len(scores))
     min_score = round(min(scores))
     max_score = round(max(scores))
-    print(f"What is the assignment name: Min: {min_score}%")
+    print(f"Min: {min_score}%")
     print(f"Avg: {avg_score}%")
     print(f"Max: {max_score}%")
 
@@ -88,10 +88,10 @@ def assignment_graph(name, assignments, submissions):
             assignment_id = id
             break
     if not assignment_id:
-        print(f"What is the assignment name: Assignment {name} not found.")
+        print(f"Assignment {name} not found.")
         return
     if assignment_id not in submissions:
-        print(f"What is the assignment name: No submissions found for {name}.")
+        print(f"No submissions found for {name}.")
         return
     scores = list(submissions[assignment_id].values())
     bins = [i for i in range(50, 101, 5)]
